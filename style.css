@@ -85,26 +85,32 @@ header{
 }
 
 
-/* ================= HERO ================= */
+/* ================= HERO (FINAL FIXED VERSION) ================= */
 
 .hero{
     min-height:100vh;
     display:flex;
     align-items:center;
-    padding-top:160px;
+    padding-top:140px; /* slightly reduced for mobile balance */
     background:linear-gradient(135deg,#0b0f1a 0%, #0f172a 45%, #0e1b2e 100%);
     position:relative;
+    overflow:hidden;   /* CRITICAL: prevents horizontal scroll */
 }
 
+/* Responsive glow */
 .hero::after{
     content:"";
     position:absolute;
-    width:550px;
-    height:550px;
+    width:80vw;          /* responsive width */
+    height:80vw;
+    max-width:550px;     /* desktop limit */
+    max-height:550px;
     background:radial-gradient(circle, rgba(0,195,255,0.07) 0%, transparent 70%);
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
+    pointer-events:none;
+    z-index:0;
 }
 
 .hero-content{
@@ -113,7 +119,7 @@ header{
 }
 
 .hero h2{
-    font-size:clamp(42px,6vw,72px);
+    font-size:clamp(34px,7vw,72px);  /* better mobile scaling */
     font-weight:600;
     margin-bottom:25px;
     background:linear-gradient(90deg,#00f5d4,#00c3ff);
@@ -124,7 +130,7 @@ header{
 .hero p{
     color:#c2d4e6;
     max-width:650px;
-    font-size:18px;
+    font-size:16px;       /* slightly smaller for mobile comfort */
     line-height:1.7;
     margin-bottom:40px;
 }
@@ -132,7 +138,7 @@ header{
 .btn-primary{
     background:linear-gradient(90deg,#00f5d4,#00c3ff);
     color:black;
-    padding:15px 34px;
+    padding:14px 30px;
     text-decoration:none;
     font-weight:600;
     border-radius:6px;
@@ -143,6 +149,12 @@ header{
     box-shadow:0 10px 30px rgba(0,195,255,0.35);
 }
 
+/* Extra safety for small devices */
+@media(max-width:400px){
+    .hero{
+        padding-top:120px;
+    }
+}
 
 /* ================= SECTIONS ================= */
 
@@ -552,4 +564,5 @@ footer{
     .brand-text span{
         font-size:9px;
     }
+
 }
