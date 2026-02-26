@@ -596,3 +596,38 @@ footer{
 
 }
 
+/* ================= TRUST STRIP ================= */
+
+.trust-strip{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:40px;
+    flex-wrap:wrap;
+    padding:50px 20px;
+    background:#0d1624;
+    border-top:1px solid rgba(0,255,200,0.08);
+    border-bottom:1px solid rgba(0,255,200,0.08);
+}
+
+.trust-item{
+    font-size:14px;
+    letter-spacing:1px;
+    color:#7fffd4;
+    opacity:0.9;
+    text-transform:uppercase;
+}
+
+@media(max-width:768px){
+
+    .trust-strip{
+        gap:20px;
+        padding:35px 15px;
+    }
+
+    .trust-item{
+        font-size:12px;
+        text-align:center;
+    }
+
+}
