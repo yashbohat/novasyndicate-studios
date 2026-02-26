@@ -197,7 +197,9 @@ header{
 }
 
 .card p{
-    color:#b7c9dd;
+    color:#7fffd4;
+    opacity:0.7;
+    transition:0.3s;
     line-height:1.7;
 }
 
@@ -566,3 +568,4 @@ footer{
     }
 
 }
+
