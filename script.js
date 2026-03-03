@@ -1,60 +1,32 @@
-document.addEventListener("DOMContentLoaded", function(){
+const faders=document.querySelectorAll(".fade");
 
-    /* ===== FADE ANIMATION ===== */
-    const faders = document.querySelectorAll(".fade");
+const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+},{threshold:0.2});
 
-    if(faders.length){
-        const observer = new IntersectionObserver(entries=>{
-            entries.forEach(entry=>{
-                if(entry.isIntersecting){
-                    entry.target.classList.add("show");
-                }
-            });
-        },{threshold:0.2});
+faders.forEach(f=>observer.observe(f));
 
-        faders.forEach(f=>observer.observe(f));
-    }
+const hamburger=document.getElementById("hamburger");
+const nav=document.getElementById("nav");
 
-    /* ===== SERVICE CARDS ===== */
-    const serviceCards = document.querySelectorAll('.service-card');
+hamburger.addEventListener("click",()=>{
+    nav.classList.toggle("active");
+});
 
-    if(serviceCards.length){
-        const serviceObserver = new IntersectionObserver(entries=>{
-            entries.forEach(entry=>{
-                if(entry.isIntersecting){
-                    entry.target.classList.add('show');
-                }
-            });
-        },{threshold:0.2});
+const serviceCards = document.querySelectorAll('.service-card');
 
-        serviceCards.forEach(card=>{
-            serviceObserver.observe(card);
-        });
-    }
+const serviceObserver = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add('show');
+        }
+    });
+},{threshold:0.2});
 
-    /* ===== HAMBURGER ===== */
-    const hamburger = document.getElementById("hamburger");
-    const nav = document.getElementById("nav");
-
-    if(hamburger && nav){
-        hamburger.addEventListener("click", ()=>{
-            nav.classList.toggle("active");
-        });
-    }
-
-    /* ===== THEME TOGGLE ===== */
-    const themeToggle = document.getElementById("themeToggle");
-
-    if(themeToggle){
-        themeToggle.addEventListener("click", ()=>{
-            document.body.classList.toggle("light-theme");
-
-            if(document.body.classList.contains("light-theme")){
-                themeToggle.textContent = "☀️";
-            } else {
-                themeToggle.textContent = "🌙";
-            }
-        });
-    }
-
+serviceCards.forEach(card=>{
+    serviceObserver.observe(card);
 });
